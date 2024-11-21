@@ -1,0 +1,23 @@
+# Editor settings
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Logs
+*.log
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Build files
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.cache
+
+# Environment variables
+.env
