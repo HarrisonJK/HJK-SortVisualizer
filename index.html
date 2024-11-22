@@ -4,26 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collapsible Menu</title>
+  <title>Sorting Visualizer</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/visualizer.css">
 </head>
 
 <body>
-  <div id="menu" class="collapsed">
+  <!-- Collapsible Menu -->
+  <div id="menu">
     <button id="toggleButton" onclick="toggleMenu()">☰</button>
     <div class="menu-content">
       <div class="menu-title">Sorting Algorithms</div>
       <ul>
+        <li>Bubble Sort</li>
         <li>Quick Sort</li>
         <li>Merge Sort</li>
         <li>Heap Sort</li>
-        <li>Bubble Sort</li>
         <li>Insertion Sort</li>
       </ul>
     </div>
   </div>
-  <script src="script.js"></script>
+
+  <!-- Visualizer -->
+  <div id="visualizer-container">
+    <div id="bar-container"></div>
+    <div id="control-panel">
+      <button id="generate-bars" onclick="generateRandomBars()">Generate Bars</button>
+      <button id="start-sorting" onclick="startSorting()">Start Sorting</button>
+    </div>
+  </div>
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/visualizer.js"></script>
 </body>
 
 </html>
