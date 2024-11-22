@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/menu.css">
   <link rel="stylesheet" href="styles/visualizer.css">
+  <link rel="stylesheet" href="styles/control-panel.css">
 </head>
 
 <body>
@@ -30,8 +31,34 @@
   <div id="visualizer-container">
     <div id="bar-container"></div>
     <div id="control-panel">
-      <button id="generate-bars" onclick="generateRandomBars()">Generate Bars</button>
-      <button id="start-sorting" onclick="startSorting()">Start Sorting</button>
+      <div class="control-panel-title">Control Panel</div>
+
+      <!-- Number of Bars Slider -->
+      <label for="bar-count">Number of Bars:</label>
+      <div class="input-group">
+        <input type="range" id="bar-count" min="10" max="100" value="30" />
+        <span id="bar-count-value">30</span>
+      </div>
+
+      <!-- Sorting Speed Buttons -->
+      <label for="sorting-speed">Sorting Speed:</label>
+      <div id="sorting-speed">
+        <label>
+          <input type="radio" name="speed" value="slow" checked> Slow
+        </label>
+        <label>
+          <input type="radio" name="speed" value="medium"> Medium
+        </label>
+        <label>
+          <input type="radio" name="speed" value="fast"> Fast
+        </label>
+      </div>
+
+      <!-- Buttons -->
+      <div class="control-panel-buttons">
+        <button id="generate-bars" onclick="generateRandomBars()">Generate Bars</button>
+        <button id="toggle-sorting" onclick="toggleSorting()">Start Sorting</button>
+      </div>
     </div>
   </div>
 

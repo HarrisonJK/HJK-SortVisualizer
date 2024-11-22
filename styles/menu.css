@@ -16,6 +16,11 @@
   z-index: 20;
 }
 
+#menu.collapsed + #visualizer-container {
+  left: 10px;
+  width: calc(100% - 20px);
+}
+
 #menu:not(.collapsed) {
   height: 100vh;
   width: 16%;
