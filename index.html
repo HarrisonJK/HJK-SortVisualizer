@@ -18,11 +18,11 @@
     <div class="menu-content">
       <div class="menu-title">Sorting Algorithms</div>
       <ul>
-        <li>Bubble Sort</li>
-        <li>Quick Sort</li>
-        <li>Merge Sort</li>
-        <li>Heap Sort</li>
-        <li>Insertion Sort</li>
+        <li class="algorithm-item" onclick="selectAlgorithm('bubbleSort')">Bubble Sort</li>
+        <li class="algorithm-item" onclick="selectAlgorithm('quickSort')">Quick Sort</li>
+        <li class="algorithm-item" onclick="selectAlgorithm('mergeSort')">Merge Sort</li>
+        <li class="algorithm-item" onclick="selectAlgorithm('heapSort')">Heap Sort</li>
+        <li class="algorithm-item" onclick="selectAlgorithm('insertionSort')">Insertion Sort</li>
       </ul>
     </div>
   </div>
@@ -34,6 +34,7 @@
       <div class="control-panel-title">Control Panel</div>
 
       <!-- Number of Bars Slider -->
+
       <label for="bar-count">Number of Bars:</label>
       <div class="input-group">
         <input type="range" id="bar-count" min="10" max="100" value="30" />
@@ -41,20 +42,17 @@
       </div>
 
       <!-- Sorting Speed Buttons -->
+
       <label for="sorting-speed">Sorting Speed:</label>
+      <!-- will work on next update -->
       <div id="sorting-speed">
-        <label>
-          <input type="radio" name="speed" value="slow" checked> Slow
-        </label>
-        <label>
-          <input type="radio" name="speed" value="medium"> Medium
-        </label>
-        <label>
-          <input type="radio" name="speed" value="fast"> Fast
-        </label>
+        <label><input type="radio" name="speed" value="slow" checked> Slow</label>
+        <label><input type="radio" name="speed" value="medium"> Medium</label>
+        <label><input type="radio" name="speed" value="fast"> Fast</label>
       </div>
 
-      <!-- Buttons -->
+      <!-- Control Panel -->
+
       <div class="control-panel-buttons">
         <button id="generate-bars" onclick="generateRandomBars()">Generate Bars</button>
         <button id="toggle-sorting" onclick="toggleSorting()">Start Sorting</button>
@@ -62,8 +60,8 @@
     </div>
   </div>
 
-  <script src="scripts/main.js"></script>
   <script src="scripts/visualizer.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 
 </html>

@@ -1,11 +1,20 @@
-// Random Bar Generator
+// import { bubbleSort } from "./sorting/bubbleSort.js";
+//need to change scripts to module in order to be able to import algorithms modularly
+
+let selectedAlgorithm = null; //need to force selection from user
+let isSorting = false; //need as a baseline
+
+// Generate random bars
 function generateRandomBars() {
   const barContainer = document.getElementById("bar-container");
-  barContainer.innerHTML = "";
+  barContainer.innerHTML = ""; // Clear the existing bars
 
-  const numberOfBars = 30;
+  // Get the value of the slider to generate the number of bars needed for where slider is
+  const numberOfBars = document.getElementById("bar-count").value;
+
+  // Generate the bars
   for (let i = 0; i < numberOfBars; i++) {
-    const barHeight = Math.floor(Math.random() * 100) + 10;
+    const barHeight = Math.floor(Math.random() * 100) + 1; // Random height between 1 and 100
     const bar = document.createElement("div");
     bar.classList.add("bar");
     bar.style.height = `${barHeight}%`;
@@ -13,57 +22,93 @@ function generateRandomBars() {
   }
 }
 
-// Bar Slider Input
-function updateNumberOfBars(value) {
-  const barContainer = document.getElementById("bar-container");
-  barContainer.innerHTML = "";
-
-  for (let i = 0; i < value; i++) {
-    const barHeight = Math.floor(Math.random() * 100) + 10;
-    const bar = document.createElement("div");
-    bar.classList.add("bar");
-    bar.style.height = `${barHeight}%`;
-    barContainer.appendChild(bar);
-  }
-}
-
-// Placeholder for sorting speed function
-function updateSortingSpeed(speed) {
-  console.log(`Sorting speed is set to: ${speed}`);
-}
-
-// Track if sorting is in progress
-let isSorting = false;
-
-// Toggle Start/Stop Sorting
+// Function to toggle sorting
 function toggleSorting() {
   const sortingButton = document.getElementById("toggle-sorting");
 
   if (isSorting) {
     sortingButton.textContent = "Start Sorting";
-    console.log("Sorting Stopped");
     isSorting = false;
+    console.log("Sorting Stopped");
+    // unsure why this is not changing button to stop sorting and logging come back to it
   } else {
     sortingButton.textContent = "Stop Sorting";
-    startSorting();
+    if (selectedAlgorithm) {
+      startSorting();
+    } else {
+      alert("Please select a sorting algorithm!");
+    }
     isSorting = true;
     console.log("Sorting Started");
   }
 }
 
-// sorting placeholder
-function startSorting() {
-  const algorithm = document.querySelector(".menu-content ul li.selected");
-  if (!algorithm) {
-    alert("Please select a sorting algorithm!");
-    return;
-  }
+// Function to select an algorithm and highlight it
+function selectAlgorithm(algorithmName) {
+  const algorithmItems = document.querySelectorAll(".algorithm-item");
+  algorithmItems.forEach((item) => item.classList.remove("selected"));
+  // highlight not working on document itself but it works when clicked
 
-  console.log(`Starting ${algorithm.textContent.trim()}...`);
-  // Add sorting algorithm logic
+  const selectedItem = document.querySelector(
+    `li[onclick="selectAlgorithm('${algorithmName}')"]`
+  );
+  selectedItem.classList.add("selected");
+
+  selectedAlgorithm = algorithmName;
 }
 
-//  bar count listener
+// Function to perform bubble sort w/ delay (delay need to be implemented and modularized)
+function bubbleSort() {
+  const bars = document.querySelectorAll(".bar");
+  let barHeights = Array.from(bars).map((bar) => parseInt(bar.style.height)); // initial heights of the bars
+  let n = barHeights.length;
+  let swapped;
+
+  // Swap function to update the heights of the bars
+  function swap(i, j) {
+    const temp = barHeights[i];
+    barHeights[i] = barHeights[j];
+    barHeights[j] = temp;
+
+    // Update the DOM w/ new heights
+    bars[i].style.height = `${barHeights[i]}%`;
+    bars[j].style.height = `${barHeights[j]}%`;
+  }
+
+  // Run bubble sort w/ delay
+  function runBubbleSort() {
+    swapped = false;
+
+    for (let i = 0; i < n - 1; i++) {
+      if (barHeights[i] > barHeights[i + 1]) {
+        swap(i, i + 1);
+        swapped = true;
+      }
+    }
+    n--;
+
+    if (swapped) {
+      setTimeout(() => {
+        requestAnimationFrame(runBubbleSort); //continue sorting after delay
+      }, 100); // Set the delay here
+    } else {
+      console.log("Bubble Sort Completed");
+      isSorting = false;
+    }
+  }
+
+  runBubbleSort(); // Start the bubble sort
+}
+
+// Call selected sorting algorithm selected
+function startSorting() {
+  if (selectedAlgorithm === "bubbleSort") {
+    bubbleSort();
+  }
+  // Add other sorting algorithms
+}
+
+// Event listener for number of bars input
 document
   .getElementById("bar-count")
   .addEventListener("input", function (event) {
@@ -72,10 +117,16 @@ document
     updateNumberOfBars(barCount);
   });
 
-//  sorting speed listener
-const speedRadioButtons = document.getElementsByName("speed");
-speedRadioButtons.forEach((radio) => {
-  radio.addEventListener("change", function (event) {
-    updateSortingSpeed(event.target.value);
+// Event listener for sorting button
+document
+  .getElementById("toggle-sorting")
+  .addEventListener("click", function () {
+    if (!isSorting) {
+      startSorting();
+      isSorting = true;
+      document.getElementById("toggle-sorting").textContent = "Stop Sorting";
+    } else {
+      isSorting = false;
+      document.getElementById("toggle-sorting").textContent = "Start Sorting";
+    }
   });
-});
