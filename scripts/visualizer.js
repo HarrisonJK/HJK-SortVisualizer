@@ -114,7 +114,7 @@ document
   .addEventListener("input", function (event) {
     const barCount = event.target.value;
     document.getElementById("bar-count-value").textContent = barCount;
-    updateNumberOfBars(barCount);
+    generateRandomBars(); // Call generateRandomBars directly to update bars based on slider value
   });
 
 // Event listener for sorting button
