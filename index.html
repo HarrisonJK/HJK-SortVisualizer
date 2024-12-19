@@ -14,15 +14,15 @@
 <body>
   <!-- Collapsible Menu -->
   <div id="menu">
-    <button id="toggleButton" onclick="toggleMenu()">☰</button>
+    <button id="toggleButton">☰</button>
     <div class="menu-content">
       <div class="menu-title">Sorting Algorithms</div>
       <ul>
-        <li class="algorithm-item" onclick="selectAlgorithm('bubbleSort')">Bubble Sort</li>
-        <li class="algorithm-item" onclick="selectAlgorithm('quickSort')">Quick Sort</li>
-        <li class="algorithm-item" onclick="selectAlgorithm('mergeSort')">Merge Sort</li>
-        <li class="algorithm-item" onclick="selectAlgorithm('heapSort')">Heap Sort</li>
-        <li class="algorithm-item" onclick="selectAlgorithm('insertionSort')">Insertion Sort</li>
+        <li class="algorithm-item" data-algorithm="bubbleSort">Bubble Sort</li>
+        <li class="algorithm-item" data-algorithm="quickSort">Quick Sort</li>
+        <li class="algorithm-item" data-algorithm="mergeSort">Merge Sort</li>
+        <li class="algorithm-item" data-algorithm="heapSort">Heap Sort</li>
+        <li class="algorithm-item" data-algorithm="insertionSort">Insertion Sort</li>
       </ul>
     </div>
   </div>
@@ -54,14 +54,13 @@
       <!-- Control Panel -->
 
       <div class="control-panel-buttons">
-        <button id="generate-bars" onclick="generateRandomBars()">Generate Bars</button>
-        <button id="toggle-sorting" onclick="toggleSorting()">Start Sorting</button>
+        <button id="generate-bars">Generate Bars</button>
+        <button id="toggle-sorting">Start Sorting</button>
       </div>
     </div>
   </div>
 
-  <script src="scripts/visualizer.js"></script>
-  <script src="scripts/main.js"></script>
+  <script type="module" src="scripts/main.js"></script>
 </body>
 
 </html>
