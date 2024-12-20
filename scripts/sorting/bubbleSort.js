@@ -14,6 +14,10 @@ export function bubbleSort(isSorting) {
     // Swap bar elements in DOM
     bars[i].style.height = `${barHeights[i]}%`;
     bars[j].style.height = `${barHeights[j]}%`;
+
+    //for on hover
+    bars[i].dataset.height = barHeights[i];
+    bars[j].dataset.height = barHeights[j];
   }
 
   function runBubbleSort() {

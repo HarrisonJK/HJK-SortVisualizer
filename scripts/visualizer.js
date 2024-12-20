@@ -16,7 +16,21 @@ export function generateRandomBars() {
     const bar = document.createElement("div");
     bar.classList.add("bar");
     bar.style.height = `${barHeight}%`;
+    bar.dataset.height = barHeight; // Storing for on hover
     barContainer.appendChild(bar);
+
+    bar.addEventListener("mouseover", function (event) {
+      const barValueDisplay = document.getElementById("bar-value-display");
+      barValueDisplay.textContent = `${bar.dataset.height}`; //display based on stored value
+      barValueDisplay.style.left = `${event.pageX + 10}px`; // Position value next to cursor
+      barValueDisplay.style.top = `${event.pageY + 10}px`;
+      barValueDisplay.style.display = "block"; // Make visible
+    });
+
+    bar.addEventListener("mouseout", function () {
+      const barValueDisplay = document.getElementById("bar-value-display");
+      barValueDisplay.style.display = "none"; // Hide off hover
+    });
   }
 }
 
@@ -25,7 +39,7 @@ export function toggleSorting(isSorting, selectedAlgorithm, startSorting) {
   const sortingButton = document.getElementById("toggle-sorting");
 
   if (isSorting) {
-    sortingButton.textContent = "Start Sorting"; //
+    sortingButton.textContent = "Start Sorting";
     isSorting = false;
     console.log("Sorting Stopped");
   } else {

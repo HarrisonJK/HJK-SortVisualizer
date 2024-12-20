@@ -34,3 +34,18 @@
 .bar:hover {
   background-color: #0369a1;
 }
+
+/* On hover styling  */
+#bar-value-display {
+  position: absolute;
+  display: none;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: black;
+  background-color: white;
+  padding: 5px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* On top of other elements */
+  pointer-events: none; /* Avoid hover blocking interactions */
+}
