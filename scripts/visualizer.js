@@ -54,6 +54,7 @@ export function toggleSorting(isSorting, selectedAlgorithm, startSorting) {
   }
   return isSorting;
 }
+
 // Function to select an algorithm and highlight it
 export function selectAlgorithm(algorithmName) {
   console.log("Algorithm selected:", algorithmName);
@@ -70,11 +71,14 @@ export function selectAlgorithm(algorithmName) {
   return algorithmName;
 }
 
-// Call selected sorting algorithm selected
+// Call selected sorting algorithm
 export function startSorting(selectedAlgorithm) {
   console.log("Starting sorting with algorithm:", selectedAlgorithm);
+  const sortingSpeed = document.querySelector(
+    'input[name="speed"]:checked'
+  ).value; // Get selected sorting speed
   if (selectedAlgorithm === "bubbleSort") {
-    bubbleSort(isSorting); // Pass isSorting to bubbleSort
+    bubbleSort(isSorting, sortingSpeed); // Pass sorting speed to bubbleSort
   }
   // Add other sorting algorithms
 }

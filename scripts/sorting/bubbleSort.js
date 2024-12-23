@@ -1,5 +1,5 @@
 //Bubble Sort w/ delay (delay need to be implemented and modularized)
-export function bubbleSort(isSorting) {
+export function bubbleSort(isSorting, speed) {
   const bars = document.querySelectorAll(".bar");
   let barHeights = Array.from(bars).map((bar) => parseInt(bar.style.height)); // Get the initial heights of the bars
   let n = barHeights.length;
@@ -31,17 +31,23 @@ export function bubbleSort(isSorting) {
     }
     n--;
 
+    let delay = 100; // Default speed
+    if (speed === "slow") {
+      delay = 200;
+    } else if (speed === "medium") {
+      delay = 150;
+    }
+
     if (swapped) {
       setTimeout(() => {
-        requestAnimationFrame(runBubbleSort); // delay function that is not working
-      }, 100);
+        requestAnimationFrame(runBubbleSort); // delay function
+      }, delay);
     } else {
       console.log("Bubble Sort Completed");
       isSorting = false; // Stop sorting when done
 
       const sortingButton = document.getElementById("toggle-sorting");
       sortingButton.textContent = "Start Sorting"; // Reset button text
-
       sortingButton.disabled = false;
     }
   }
