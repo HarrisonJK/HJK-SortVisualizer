@@ -1,4 +1,9 @@
 import { bubbleSort } from "./sorting/bubbleSort.js";
+import { quickSort } from "./sorting/quickSort.js";
+// import { mergeSort } from "./sorting/mergeSort.js";
+// import { heapSort } from "./sorting/heapSort.js";
+// import { insertionSort } from "./sorting/insertionSort.js";
+// import { selectionSort } from "./sorting/selectionSort.js";
 
 let isSorting = false; //need as a baseline
 
@@ -79,10 +84,20 @@ export function startSorting(selectedAlgorithm) {
   ).value; // Get selected sorting speed
   if (selectedAlgorithm === "bubbleSort") {
     bubbleSort(isSorting, sortingSpeed); // Pass sorting speed to bubbleSort
+  } else if (selectedAlgorithm === "quickSort") {
+    quickSort(isSorting, sortingSpeed);
+    // } else if (selectedAlgorithm === "mergeSort") {
+    //   mergeSort(isSorting, sortingSpeed);
+    // } else if (selectedAlgorithm === "heapSort") {
+    //   heapSort(isSorting, sortingSpeed);
+    // } else if (selectedAlgorithm === "insertionSort") {
+    //   insertionSort(isSorting, sortingSpeed);
+    // } else if (selectedAlgorithm === "selectionSort") {
+    //   selectionSort(isSorting, sortingSpeed);
+    // } else {
+    //   console.error("Unknown sorting algorithm selected!");
   }
-  // Add other sorting algorithms
 }
-
 export function toggleMenu() {
   const menu = document.getElementById("menu");
   menu.classList.toggle("collapsed");

@@ -5,7 +5,7 @@ export function bubbleSort(isSorting, speed) {
   let n = barHeights.length;
   let swapped;
 
-  //swap the bar heights
+  //Swap the bar heights
   function swap(i, j) {
     const temp = barHeights[i];
     barHeights[i] = barHeights[j];
@@ -15,7 +15,7 @@ export function bubbleSort(isSorting, speed) {
     bars[i].style.height = `${barHeights[i]}%`;
     bars[j].style.height = `${barHeights[j]}%`;
 
-    //for on hover
+    //For on hover
     bars[i].dataset.height = barHeights[i];
     bars[j].dataset.height = barHeights[j];
   }
