@@ -1,4 +1,4 @@
-//Bubble Sort w/ delay (delay need to be implemented and modularized)
+//Bubble Sort w/ delay
 export function bubbleSort(isSorting, speed) {
   const bars = document.querySelectorAll(".bar");
   let barHeights = Array.from(bars).map((bar) => parseInt(bar.style.height)); // Get the initial heights of the bars
