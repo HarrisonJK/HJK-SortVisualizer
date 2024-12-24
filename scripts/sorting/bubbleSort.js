@@ -23,10 +23,11 @@ export function bubbleSort(isSorting, speed) {
   function runBubbleSort() {
     swapped = false;
 
+    // Compare adjacent elements and move up larger
     for (let i = 0; i < n - 1; i++) {
       if (barHeights[i] > barHeights[i + 1]) {
-        swap(i, i + 1);
-        swapped = true;
+        swap(i, i + 1); //Swap if current element is greater
+        swapped = true; //Mark swapped
       }
     }
     n--;

@@ -70,7 +70,6 @@ export function quickSort(isSorting, speed) {
         requestAnimationFrame(runQuickSort);
       }, delay);
     } else {
-      // Sorting complete
       console.log("Quick Sort Completed");
 
       isSorting = false;
@@ -81,5 +80,5 @@ export function quickSort(isSorting, speed) {
     }
   }
 
-  runQuickSort(); // Start the sorting process
+  runQuickSort(); // function runner
 }
