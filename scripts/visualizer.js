@@ -1,7 +1,7 @@
 import { bubbleSort } from "./sorting/bubbleSort.js";
 import { quickSort } from "./sorting/quickSort.js";
 import { mergeSort } from "./sorting/mergeSort.js";
-// import { heapSort } from "./sorting/heapSort.js";
+import { heapSort } from "./sorting/heapSort.js";
 import { insertionSort } from "./sorting/insertionSort.js";
 import { selectionSort } from "./sorting/selectionSort.js";
 
@@ -88,14 +88,14 @@ export function startSorting(selectedAlgorithm) {
     quickSort(isSorting, sortingSpeed);
   } else if (selectedAlgorithm === "mergeSort") {
     mergeSort(isSorting, sortingSpeed);
-    // } else if (selectedAlgorithm === "heapSort") {
-    //   heapSort(isSorting, sortingSpeed);
+  } else if (selectedAlgorithm === "heapSort") {
+    heapSort(isSorting, sortingSpeed);
   } else if (selectedAlgorithm === "insertionSort") {
     insertionSort(isSorting, sortingSpeed);
   } else if (selectedAlgorithm === "selectionSort") {
     selectionSort(isSorting, sortingSpeed);
-    // } else {
-    //   console.error("Unknown sorting algorithm selected!");
+  } else {
+    console.error("Unknown sorting algorithm selected!");
   }
 }
 export function toggleMenu() {
